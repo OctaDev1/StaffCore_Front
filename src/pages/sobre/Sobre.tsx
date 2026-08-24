@@ -1,7 +1,15 @@
+import React from 'react';
 
-const Sobre = () => {
-  // Array com os dados da equipe para facilitar a renderização
-  const equipe = [
+// Tipagem para os membros da equipe (TypeScript)
+interface MembroEquipe {
+  nome: string;
+  cargo: string;
+  imagem: string;
+}
+
+const Sobre: React.FC = () => {
+  // Array com os dados da equipe
+  const equipe: MembroEquipe[] = [
     { nome: 'Felipe Oliveira Lopes', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/foto_felipe.jpeg' },
     { nome: 'Gabriel Jose Alegre', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/gabriel.png' },
     { nome: 'Giovanna Karolline Menezes Ribeiro', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/giovanna.jpg' },
@@ -13,19 +21,19 @@ const Sobre = () => {
   ];
 
   return (
-    <div className="bg-[#0b1a29] min-h-screen pt-12 pb-24 px-10 text-white font-sans text-center">
-      <div className="max-w-5xl mx-auto">
+    <div className="bg-[#0b1a29] min-h-screen pt-12 pb-24 px-6 md:px-10 text-white font-sans text-center overflow-x-hidden">
+      <div className="max-w-5xl mx-auto w-full">
         
         {/* === CABEÇALHO E IMAGEM HERO === */}
         <h1 className="text-3xl md:text-4xl font-bold mb-10">
           Conheça o Grupo OctaDev & Staff Core
         </h1>
         
-        <div className="w-full h6 md:h-96 rounded-2xl overflow-hidden mb-8 border border-[#1a3045] shadow-2xl">
+        <div className="w-full rounded-2xl overflow-hidden mb-8 border border-[#1a3045] shadow-2xl flex items-center justify-center bg-[#10263a]">
           <img 
             src="https://ik.imagekit.io/JohnnieDiniz/equipe-octa.jpg" 
             alt="Equipe OctaDev" 
-            className="w-full h-full object-cover"
+            className="w-full h-auto object-contain"
           />
         </div>
 
@@ -38,22 +46,26 @@ const Sobre = () => {
         {/* === NOSSA EQUIPE === */}
         <h2 className="text-2xl font-bold mb-10">Nossa Equipe</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+        {/* CONTAINER DO CARROSSEL / GRID */}
+        {/* Adicionado items-stretch para garantir que os cards acompanhem a altura máxima da linha */}
+        <div className="flex w-full overflow-x-auto md:grid md:grid-cols-4 gap-6 mb-24 snap-x snap-mandatory pb-8 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-stretch">
           {equipe.map((membro, index) => (
             <a 
               key={index} 
               href={membro.imagem} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="bg-[#10263a] rounded-xl overflow-hidden border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors group block"
+              // Adicionado flex flex-col e h-full para alinhar perfeitamente os conteúdos do card
+              className="shrink-0 w-[70%] sm:w-[45%] md:w-auto snap-start bg-[#10263a] rounded-xl overflow-hidden border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors group flex flex-col h-full"
             >
-              {/* O src agora aponta diretamente para a URL que você colou lá em cima */}
               <img 
                 src={membro.imagem} 
                 alt={membro.nome} 
-                className="w-full h-56 object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                // Retirado o object-top para o rosto do Felipe voltar a aparecer no centro
+                className="w-full h-64 md:h-56 object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
               />
-              <div className="p-5 text-center border-t border-[#1a3045]">
+              {/* Adicionado flex-grow para que essa área preencha todo o espaço até alinhar os cards */}
+              <div className="p-5 text-center border-t border-[#1a3045] flex flex-col justify-center flex-grow">
                 <h3 className="font-bold text-lg text-white">{membro.nome}</h3>
                 <p className="text-[#5cc7d9] text-sm font-medium mt-1">{membro.cargo}</p>
               </div>

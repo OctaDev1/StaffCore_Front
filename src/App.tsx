@@ -1,32 +1,32 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Importação dos seus componentes
+// Importações reais dos seus arquivos
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
 import Sobre from './pages/sobre/Sobre';
-import Footer from './components/footer/Footer';
+import Dashboard from './pages/dashboard/Dashboard';
+import Suporte from './pages/suporte/Suporte'; 
+import Recurso from './pages/recurso/Recurso';
 
 function App() {
   return (
-    // BrowserRouter "abraça" toda a aplicação para habilitar as rotas
     <BrowserRouter>
       <div className="min-h-screen flex flex-col bg-[#0b1a29]">
-        
-        {/* Navbar fica fora do Routes porque aparece em todas as páginas */}
         <Navbar />
         
-        <main className="flex-grow">
-          {/* O Routes define qual componente vai aparecer no "meio" da tela baseado na URL */}
+        <main className="flex-grow flex flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/recursos" element= {<Recurso />} />
+            <Route path="/suporte" element={<Suporte />} /> 
           </Routes>
         </main>
         
-        {/* Footer também aparece em todas as páginas */}
         <Footer />
-        
       </div>
     </BrowserRouter>
   );
