@@ -47,27 +47,25 @@ const Sobre: React.FC = () => {
         <h2 className="text-2xl font-bold mb-10">Nossa Equipe</h2>
         
         {/* CONTAINER DO CARROSSEL / GRID */}
-        {/* Adicionado items-stretch para garantir que os cards acompanhem a altura máxima da linha */}
-        <div className="flex w-full overflow-x-auto md:grid md:grid-cols-4 gap-6 mb-24 snap-x snap-mandatory pb-8 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-stretch">
+        <div className="flex w-full overflow-x-auto md:grid md:grid-cols-4 gap-6 mb-24 snap-x snap-mandatory pb-8 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {equipe.map((membro, index) => (
             <a 
               key={index} 
               href={membro.imagem} 
               target="_blank" 
               rel="noopener noreferrer" 
-              // Adicionado flex flex-col e h-full para alinhar perfeitamente os conteúdos do card
-              className="shrink-0 w-[70%] sm:w-[45%] md:w-auto snap-start bg-[#10263a] rounded-xl overflow-hidden border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors group flex flex-col h-full"
+              className="shrink-0 w-[70%] sm:w-[45%] md:w-auto snap-start bg-[#10263a] rounded-xl overflow-hidden border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors group flex flex-col"
             >
               <img 
                 src={membro.imagem} 
                 alt={membro.nome} 
-                // Retirado o object-top para o rosto do Felipe voltar a aparecer no centro
                 className="w-full h-64 md:h-56 object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
               />
-              {/* Adicionado flex-grow para que essa área preencha todo o espaço até alinhar os cards */}
-              <div className="p-5 text-center border-t border-[#1a3045] flex flex-col justify-center flex-grow">
-                <h3 className="font-bold text-lg text-white">{membro.nome}</h3>
-                <p className="text-[#5cc7d9] text-sm font-medium mt-1">{membro.cargo}</p>
+              {/* CORREÇÃO AQUI: Altura fixa de h-[120px] na caixa de texto */}
+              <div className="p-5 text-center border-t border-[#1a3045] flex flex-col justify-center h-[120px]">
+                {/* line-clamp-2 garante que nomes grandes fiquem em no máximo 2 linhas */}
+                <h3 className="font-bold text-lg text-white line-clamp-2 leading-tight" title={membro.nome}>{membro.nome}</h3>
+                <p className="text-[#5cc7d9] text-sm font-medium mt-1 shrink-0">{membro.cargo}</p>
               </div>
             </a>
           ))}

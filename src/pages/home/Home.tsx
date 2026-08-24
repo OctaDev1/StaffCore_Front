@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className="bg-[#0b1a29] text-white font-sans overflow-x-hidden">
       
       {/* === CONTEÚDO PRINCIPAL === */}
-      <div className="pt-12 pb-24 px-10 max-w-7xl mx-auto">
+      <div className="pt-12 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
         
         {/* === HERO SECTION === */}
         <section id="inicio" className="grid md:grid-cols-2 gap-12 items-center mb-32 pt-8">
@@ -49,34 +49,39 @@ const Home = () => {
         {/* === RECURSOS PRINCIPAIS === */}
         <section id="recursos" className="mb-32">
           <h2 className="text-2xl font-bold mb-8 text-center md:text-left">Recursos Principais</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          
+          {/* MUDANÇA AQUI: Adicionado flex com overflow-x-auto para mobile e grid para desktop */}
+          <div className="flex w-full overflow-x-auto md:grid md:grid-cols-3 gap-6 snap-x snap-mandatory pb-8 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-stretch">
             
-            <div className="bg-[#10263a] p-8 rounded-xl border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors">
-              <div className="w-12 h-12 mb-6 border border-[#1a3045] rounded bg-[#0b1a29] flex items-center justify-center text-[#5cc7d9]">
+            {/* Card 1 */}
+            <div className="shrink-0 w-[85%] sm:w-[45%] md:w-auto snap-start bg-[#10263a] p-8 rounded-xl border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors flex flex-col h-full">
+              <div className="w-12 h-12 mb-6 border border-[#1a3045] rounded bg-[#0b1a29] flex items-center justify-center text-[#5cc7d9] shrink-0">
                 <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-4">Automação de Folha</h3>
-              <p className="text-sm text-[#a3b8cc] leading-relaxed">
+              <p className="text-sm text-[#a3b8cc] leading-relaxed flex-grow">
                 Automação de folha completa e otimização inteligente para sua equipe.
               </p>
             </div>
 
-            <div className="bg-[#10263a] p-8 rounded-xl border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors">
-              <div className="w-12 h-12 mb-6 border border-[#1a3045] rounded bg-[#0b1a29] flex items-center justify-center text-[#5cc7d9]">
+            {/* Card 2 */}
+            <div className="shrink-0 w-[85%] sm:w-[45%] md:w-auto snap-start bg-[#10263a] p-8 rounded-xl border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors flex flex-col h-full">
+              <div className="w-12 h-12 mb-6 border border-[#1a3045] rounded bg-[#0b1a29] flex items-center justify-center text-[#5cc7d9] shrink-0">
                 <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-4">Gestão de Ponto</h3>
-              <p className="text-sm text-[#a3b8cc] leading-relaxed">
+              <p className="text-sm text-[#a3b8cc] leading-relaxed flex-grow">
                 Gestão conectando dados em um sistema de visão diária simplificada.
               </p>
             </div>
 
-            <div className="bg-[#10263a] p-8 rounded-xl border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors">
-              <div className="w-12 h-12 mb-6 border border-[#1a3045] rounded bg-[#0b1a29] flex items-center justify-center text-[#5cc7d9]">
+            {/* Card 3 */}
+            <div className="shrink-0 w-[85%] sm:w-[45%] md:w-auto snap-start bg-[#10263a] p-8 rounded-xl border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors flex flex-col h-full">
+              <div className="w-12 h-12 mb-6 border border-[#1a3045] rounded bg-[#0b1a29] flex items-center justify-center text-[#5cc7d9] shrink-0">
                 <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
               </div>
               <h3 className="text-xl font-bold mb-4">Recrutamento</h3>
-              <p className="text-sm text-[#a3b8cc] leading-relaxed">
+              <p className="text-sm text-[#a3b8cc] leading-relaxed flex-grow">
                 Rastreamento avançado conectado com trabalho remoto e múltiplos canais.
               </p>
             </div>
