@@ -6,7 +6,7 @@ const Sobre = () => {
     { nome: 'Gabriel Jose Alegre', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/gabriel.png' },
     { nome: 'Giovanna Karolline Menezes Ribeiro', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/giovanna.jpg' },
     { nome: 'Guilherme Oliveira', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/guilherme.jpeg' },
-    { nome: 'Joao Vitor Diniz Alves', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/joao-vitor?updatedAt=1787580765177' },
+    { nome: 'João Vitor Diniz Alves', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/Joao%20Vitor.jpg' },
     { nome: 'Juliana Vitoria Pires Macedo', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/Juliana.jpg' },
     { nome: 'Maryane Praxedes Alves da Silva', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/Maryanne.webp' },
     { nome: 'Thiago Jose Nascimento Versiani', cargo: 'Scrum Master', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/thiago.jpg' },
@@ -23,7 +23,7 @@ const Sobre = () => {
         
         <div className="w-full h6 md:h-96 rounded-2xl overflow-hidden mb-8 border border-[#1a3045] shadow-2xl">
           <img 
-            src="https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/grupo-octadev" 
+            src="https://ik.imagekit.io/JohnnieDiniz/equipe-octa.jpg" 
             alt="Equipe OctaDev" 
             className="w-full h-full object-cover"
           />
@@ -42,7 +42,7 @@ const Sobre = () => {
           {equipe.map((membro, index) => (
             <a 
               key={index} 
-              href={membro.link} 
+              href={membro.imagem} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="bg-[#10263a] rounded-xl overflow-hidden border border-[#1a3045] hover:border-[#5cc7d9]/50 transition-colors group block"
