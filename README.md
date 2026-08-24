@@ -227,10 +227,6 @@ Entre os recursos demonstrados estão:
 - Integração por API REST;
 - Conexão com banco de dados MySQL.
 
-### 🌐 Plataforma
-
-`app.staffcore.com.br/colaboradores`
-
 ---
 
 ## 🔮 Implementações Futuras
