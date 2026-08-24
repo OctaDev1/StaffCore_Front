@@ -1,16 +1,15 @@
-import React from 'react';
 
 const Sobre = () => {
   // Array com os dados da equipe para facilitar a renderização
   const equipe = [
     { nome: 'Felipe Oliveira Lopes', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/foto_felipe.jpeg' },
-    { nome: 'Gabriel Jose Alegre', cargo: 'CTO', imagem: '11' },
-    { nome: 'Giovanna Karolline Menezes Ribeiro', cargo: 'COO', imagem: '8' },
-    { nome: 'Guilherme Oliveira', cargo: 'Tech Lead', imagem: '9' },
-    { nome: 'Joao Vitor Diniz Alves', cargo: 'Dev Backend', imagem: '14' },
-    { nome: 'Juliana Vitoria Pires Macedo', cargo: 'Dev Frontend', imagem: '10' },
-    { nome: 'Maryane Praxedes Alves da Silva', cargo: 'Dev Frontend', imagem: '10' },
-    { nome: 'Thiago Jose Nascimento Versiani', cargo: 'Dev Frontend', imagem: '10' },
+    { nome: 'Gabriel Jose Alegre', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/gabriel.png' },
+    { nome: 'Giovanna Karolline Menezes Ribeiro', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/giovanna.jpg' },
+    { nome: 'Guilherme Oliveira', cargo: 'Tester', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/guilherme.jpeg' },
+    { nome: 'Joao Vitor Diniz Alves', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/joao-vitor?updatedAt=1787580765177' },
+    { nome: 'Juliana Vitoria Pires Macedo', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/Juliana.jpg' },
+    { nome: 'Maryane Praxedes Alves da Silva', cargo: 'Dev', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/Maryanne.webp' },
+    { nome: 'Thiago Jose Nascimento Versiani', cargo: 'Scrum Master', imagem: 'https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/thiago.jpg' },
   ];
 
   return (
@@ -24,7 +23,7 @@ const Sobre = () => {
         
         <div className="w-full h6 md:h-96 rounded-2xl overflow-hidden mb-8 border border-[#1a3045] shadow-2xl">
           <img 
-            src="https://ik.imagekit.io/1frzfy0hh/equipe.png" 
+            src="https://ik.imagekit.io/JohnnieDiniz/staffcore/integrantes/grupo-octadev" 
             alt="Equipe OctaDev" 
             className="w-full h-full object-cover"
           />
