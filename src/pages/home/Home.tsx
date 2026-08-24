@@ -1,6 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+// Tipagem para os depoimentos (TypeScript)
+interface Depoimento {
+  texto: string;
+  nome: string;
+  empresa: string;
+  imagem: string;
+}
 
 const Home: React.FC = () => {
+  // Array de dados dos depoimentos
+  const depoimentos: Depoimento[] = [
+    {
+      texto: "“Equipe muito profissional e atenciosa. A StaffCore tornou nosso processo de contratação mais rápido, simples e eficiente!”",
+      nome: "Peter Parker",
+      empresa: "SpiderTech",
+      imagem: "https://i0.wp.com/cromossomonerd.com.br/wp-content/uploads/2017/03/destaque_homem_aranha.png?fit=1068%2C600"
+    },
+    {
+      texto: "“Com a StaffCore, conseguimos automatizar a folha de pagamento de milhares de funcionários com precisão absoluta. Recomendo de olhos fechados!”",
+      nome: "Ana Souza",
+      empresa: "TechNova Corp",
+      imagem: "https://i.pravatar.cc/150?img=47"
+    },
+    {
+      texto: "“A visão de People Analytics transformou a forma como tomamos decisões estratégicas. Nosso turnover caiu pela metade em apenas 6 meses.”",
+      nome: "Carlos Eduardo",
+      empresa: "Grupo Nexus",
+      imagem: "https://i.pravatar.cc/150?img=11"
+    },
+    {
+      texto: "“O portal do colaborador é super intuitivo. Nossa equipe inteira adotou a plataforma na primeira semana de uso sem nenhuma dificuldade.”",
+      nome: "Mariana Rios",
+      empresa: "Inova RH",
+      imagem: "https://i.pravatar.cc/150?img=5"
+    },
+    {
+      texto: "“Reduzimos o tempo de fechamento de ponto de 5 dias para apenas algumas horas. A geolocalização pelo celular é perfeita para nossos times externos.”",
+      nome: "Roberto Costa",
+      empresa: "BuildCorp Engenharia",
+      imagem: "https://i.pravatar.cc/150?img=12"
+    },
+    {
+      texto: "“O módulo de recrutamento nos ajudou a encontrar talentos em tempo recorde. A integração de ponta a ponta é o grande diferencial do sistema.”",
+      nome: "Fernanda Lima",
+      empresa: "Agência Crescer",
+      imagem: "https://i.pravatar.cc/150?img=49"
+    }
+  ];
+
+  // Estado para controlar qual depoimento está visível na tela
+  const [indiceAtual, setIndiceAtual] = useState(0);
+
+  // Função para avançar para o próximo depoimento
+  const proximo = () => {
+    setIndiceAtual((prev) => (prev === depoimentos.length - 1 ? 0 : prev + 1));
+  };
+
+  // Função para voltar para o depoimento anterior
+  const anterior = () => {
+    setIndiceAtual((prev) => (prev === 0 ? depoimentos.length - 1 : prev - 1));
+  };
+
   return (
     <div className="bg-[#0b1a29] text-white font-sans overflow-x-hidden">
       
@@ -50,7 +111,6 @@ const Home: React.FC = () => {
         <section id="recursos" className="mb-32">
           <h2 className="text-2xl font-bold mb-8 text-center md:text-left">Recursos Principais</h2>
           
-          {/* MUDANÇA AQUI: Adicionado flex com overflow-x-auto para mobile e grid para desktop */}
           <div className="flex w-full overflow-x-auto md:grid md:grid-cols-3 gap-6 snap-x snap-mandatory pb-8 scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-stretch">
             
             {/* Card 1 */}
@@ -94,39 +154,69 @@ const Home: React.FC = () => {
           <h2 className="text-2xl font-bold mb-8 text-center md:text-left">Depoimentos</h2>
           
           <div className="flex flex-col sm:flex-row items-center gap-6 w-full max-w-5xl mx-auto md:mx-0">
-            <button className="hidden sm:flex w-10 h-10 rounded-full bg-[#10263a] items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors shrink-0">
+            
+            {/* BOTÃO ANTERIOR (Computador) */}
+            <button 
+              onClick={anterior}
+              className="hidden sm:flex w-10 h-10 rounded-full bg-[#10263a] items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors shrink-0"
+            >
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path></svg>
             </button>
 
-            <div className="bg-[#10263a] p-8 rounded-xl border border-[#1a3045] flex flex-col md:flex-row items-center gap-8 w-full text-center md:text-left">
+            {/* CARD DO DEPOIMENTO ATUAL */}
+            <div className="bg-[#10263a] p-8 rounded-xl border border-[#1a3045] flex flex-col md:flex-row items-center gap-8 w-full text-center md:text-left min-h-[220px]">
               <img 
-                src="https://i0.wp.com/cromossomonerd.com.br/wp-content/uploads/2017/03/destaque_homem_aranha.png?fit=1068%2C600" 
-                alt="Foto de perfil de Peter Parker" 
-                className="w-32 h-32 rounded-full md:rounded-lg object-cover shadow-lg shrink-0"
+                src={depoimentos[indiceAtual].imagem} 
+                alt={`Foto de perfil de ${depoimentos[indiceAtual].nome}`}
+                className="w-32 h-32 rounded-full md:rounded-lg object-cover shadow-lg shrink-0 transition-opacity duration-300"
               />
               
               <div className="flex-1">
-                <p className="italic text-[#a3b8cc] mb-6 text-lg leading-relaxed">
-                  “Equipe muito profissional e atenciosa. A StaffCore tornou nosso processo de contratação mais rápido, simples e eficiente!”
+                <p className="italic text-[#a3b8cc] mb-6 text-lg leading-relaxed transition-opacity duration-300">
+                  {depoimentos[indiceAtual].texto}
                 </p>
-                <h4 className="font-bold text-white text-lg">Peter Parker</h4>
-                <span className="text-sm text-[#5cc7d9]">SpiderTech</span>
+                <h4 className="font-bold text-white text-lg">{depoimentos[indiceAtual].nome}</h4>
+                <span className="text-sm text-[#5cc7d9]">{depoimentos[indiceAtual].empresa}</span>
               </div>
             </div>
 
+            {/* BOTÕES DE NAVEGAÇÃO (Mobile) */}
             <div className="flex sm:hidden gap-4 mt-4">
-              <button className="w-12 h-12 rounded-full bg-[#10263a] flex items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors">
+              <button 
+                onClick={anterior}
+                className="w-12 h-12 rounded-full bg-[#10263a] flex items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors"
+              >
                 <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path></svg>
               </button>
-              <button className="w-12 h-12 rounded-full bg-[#10263a] flex items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors">
+              <button 
+                onClick={proximo}
+                className="w-12 h-12 rounded-full bg-[#10263a] flex items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors"
+              >
                 <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path></svg>
               </button>
             </div>
 
-            <button className="hidden sm:flex w-10 h-10 rounded-full bg-[#10263a] items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors shrink-0">
+            {/* BOTÃO PRÓXIMO (Computador) */}
+            <button 
+              onClick={proximo}
+              className="hidden sm:flex w-10 h-10 rounded-full bg-[#10263a] items-center justify-center border border-[#1a3045] hover:bg-[#1a3045] text-[#a3b8cc] transition-colors shrink-0"
+            >
               <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path></svg>
             </button>
           </div>
+
+          {/* Indicadores do carrossel (Bolinhas) */}
+          <div className="flex justify-center gap-2 mt-8">
+            {depoimentos.map((_, index) => (
+              <div 
+                key={index} 
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  indiceAtual === index ? 'w-8 bg-[#5cc7d9]' : 'w-2 bg-[#1a3045]'
+                }`}
+              ></div>
+            ))}
+          </div>
+
         </section>
 
       </div>

@@ -27,8 +27,8 @@ const Dashboard: React.FC = () => {
         <div>
           {/* Logo */}
           <div className="h-20 flex items-center px-6 border-b border-[#1a3045] gap-3">
-             <div className="w-8 h-8 rounded-full border-2 border-[#5cc7d9] flex items-center justify-center text-[#5cc7d9] font-bold text-xs">SC</div>
-             <span className="font-bold text-lg tracking-wide">Staff Core</span>
+            <div className="w-8 h-8 rounded-full border-2 border-[#5cc7d9] flex items-center justify-center text-[#5cc7d9] font-bold text-xs">SC</div>
+            <span className="font-bold text-lg tracking-wide">Staff Core</span>
           </div>
           
           {/* Menu */}
@@ -151,11 +151,23 @@ const Dashboard: React.FC = () => {
                       </td>
                       <td className="py-4 px-6">{colab.depto}</td>
                       <td className="py-4 px-6">{colab.contrato}</td>
+                      
+                      {/* === LINHA DE STATUS CORRIGIDA === */}
                       <td className="py-4 px-6">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${colab.status === 'Ativo' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
-                          {colab.status === 'Ativo' ? '🟢 Ativo' : '🟡 Férias'}
+                        <span 
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap ${
+                            colab.status === 'Ativo' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'
+                          }`}
+                        >
+                          <span 
+                            className={`w-2 h-2 rounded-full ${
+                              colab.status === 'Ativo' ? 'bg-green-400' : 'bg-yellow-400'
+                            }`}
+                          ></span>
+                          {colab.status}
                         </span>
                       </td>
+
                       <td className="py-4 px-6 text-right space-x-3">
                         <button className="text-[#5cc7d9] hover:text-white transition-colors font-medium">Editar</button>
                         <button className="text-red-400 hover:text-red-300 transition-colors font-medium">Excluir</button>
